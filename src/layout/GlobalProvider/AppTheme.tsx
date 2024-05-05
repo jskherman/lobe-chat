@@ -5,6 +5,7 @@ import { App } from 'antd';
 import { ThemeAppearance, createStyles } from 'antd-style';
 import 'antd/dist/reset.css';
 import Image from 'next/image';
+import Link from 'next/link';
 import { PropsWithChildren, ReactNode, memo, useEffect } from 'react';
 
 import AntdStaticMethods from '@/components/AntdStaticMethods';
@@ -83,7 +84,7 @@ const AppTheme = memo<AppThemeProps>(
     // console.debug('server:appearance', defaultAppearance);
     // console.debug('server:primaryColor', defaultPrimaryColor);
     // console.debug('server:neutralColor', defaultNeutralColor);
-    const themeMode = useUserStore((s) => settingsSelectors.currentSettings(s).themeMode);
+    const themeMode = useUserStore(settingsSelectors.currentThemeMode);
 
     const [primaryColor, neutralColor] = useUserStore((s) => [
       settingsSelectors.currentSettings(s).primaryColor,
@@ -112,7 +113,7 @@ const AppTheme = memo<AppThemeProps>(
       >
         <GlobalStyle />
         <AntdStaticMethods />
-        <ConfigProvider config={{ imgAs: Image, imgUnoptimized: true }}>
+        <ConfigProvider config={{ aAs: Link, imgAs: Image, imgUnoptimized: true }}>
           <Container>{children}</Container>
         </ConfigProvider>
       </ThemeProvider>

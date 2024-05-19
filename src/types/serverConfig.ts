@@ -15,6 +15,8 @@ export interface ServerModelProviderConfig {
 
 export interface GlobalServerConfig {
   defaultAgent?: DeepPartial<GlobalDefaultAgent>;
+  enableUploadFileToServer?: boolean;
+  enabledAccessCode?: boolean;
   enabledOAuthSSO?: boolean;
   languageModel?: Partial<Record<GlobalLLMProviderKey, ServerModelProviderConfig>>;
   telemetry: {
